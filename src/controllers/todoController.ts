@@ -15,7 +15,6 @@ export const getTodo = asyncHandler(async (req: Request, res: Response) => {
 });
 
 export const createTodo = asyncHandler(async (req: Request, res: Response) => {
-  console.log({ body: req.body });
   const { todo, priority } = req.body;
 
   if (!todo || !priority) {
