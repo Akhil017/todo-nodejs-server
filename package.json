@@ -6,7 +6,10 @@
   "scripts": {
     "start:build": "tsc -W",
     "start:run": "nodemon build/index.js",
-    "start": "concurrently npm:start:*"
+    "start": "concurrently npm:start:*",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +22,8 @@
     "@types/node": "^20.11.17",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.3",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   },
   "dependencies": {
@@ -29,5 +34,10 @@
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "mongoose": "^8.1.2"
-  }
+  },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ]
 }
