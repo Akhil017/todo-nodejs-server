@@ -1,2 +1,2 @@
-export const getTodos = () => {};
+export const getTodos = async () => {};
 export const createTodo = () => {};
