@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",
-  "type": "module",
   "scripts": {
     "start:build": "tsc -W",
     "start:run": "nodemon build/index.js",
