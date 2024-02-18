@@ -43,7 +43,7 @@ exports.deleteTodo = (0, express_async_handler_1.default)((req, res) => __awaite
         throw new Error("Todo not found");
     }
     yield todo_js_1.TodoModel.findByIdAndDelete(req.params.id);
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, _id: req.params.id });
 }));
 exports.updateTodo = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const todo = yield todo_js_1.TodoModel.findById(req.params.id);

@@ -38,7 +38,7 @@ export const deleteTodo = asyncHandler(async (req, res) => {
     throw new Error("Todo not found");
   }
   await TodoModel.findByIdAndDelete(req.params.id);
-  res.status(200).json({ success: true });
+  res.status(200).json({ success: true, _id: req.params.id });
 });
 
 export const updateTodo = asyncHandler(async (req, res) => {
