@@ -5,3 +5,9 @@ export interface Todo extends Document {
   status: string;
   priority: string;
 }
+
+export interface User extends Document {
+  userid: string;
+  name: string;
+  email: string;
+}

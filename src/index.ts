@@ -3,7 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { errorHandler } from "./middleware/errorMiddleware";
 import { connectToDB } from "./config/db";
-import { router as TodoRouter } from "./routes/todoRoutes";
+import TodoRouter from "./routes/todoRoutes";
+import AuthRouter from "./routes/authRoutes";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -20,8 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //routes
 app.use("/api/v1/todo", TodoRouter);
+app.use("/api/v1/auth", AuthRouter);
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_: Request, res: Response) => {
   res.send("hello there");
 });
 

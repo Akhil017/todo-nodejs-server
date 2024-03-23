@@ -13,10 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTodos = exports.updateTodo = exports.deleteTodo = exports.createTodo = exports.getTodo = void 0;
-const todoModel_js_1 = require("../model/todoModel.js");
+const todo_js_1 = require("../model/todo.js");
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 exports.getTodo = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const todo = yield todoModel_js_1.TodoModel.findById(req.params.id);
+    const todo = yield todo_js_1.TodoModel.findById(req.params.id);
     if (!todo) {
         res.status(404);
         throw new Error("Todo not found");
@@ -29,7 +29,7 @@ exports.createTodo = (0, express_async_handler_1.default)((req, res) => __awaite
         res.status(400);
         throw new Error("Please add a todo and priority");
     }
-    const createdTodo = yield todoModel_js_1.TodoModel.create({
+    const createdTodo = yield todo_js_1.TodoModel.create({
         todo,
         priority,
         status: "todo",
@@ -37,24 +37,24 @@ exports.createTodo = (0, express_async_handler_1.default)((req, res) => __awaite
     res.status(201).json(createdTodo);
 }));
 exports.deleteTodo = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const todo = yield todoModel_js_1.TodoModel.findById(req.params.id);
+    const todo = yield todo_js_1.TodoModel.findById(req.params.id);
     if (!todo) {
         res.status(404);
         throw new Error("Todo not found");
     }
-    yield todoModel_js_1.TodoModel.findByIdAndDelete(req.params.id);
+    yield todo_js_1.TodoModel.findByIdAndDelete(req.params.id);
     res.status(200).json({ success: true, _id: req.params.id });
 }));
 exports.updateTodo = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const todo = yield todoModel_js_1.TodoModel.findById(req.params.id);
+    const todo = yield todo_js_1.TodoModel.findById(req.params.id);
     if (!todo) {
         res.status(400);
         throw new Error("Please add a todo and priority");
     }
-    const updatedTodo = yield todoModel_js_1.TodoModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedTodo = yield todo_js_1.TodoModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(updatedTodo);
 }));
 exports.getTodos = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const todos = yield todoModel_js_1.TodoModel.find();
+    const todos = yield todo_js_1.TodoModel.find();
     res.status(200).json(todos);
 }));

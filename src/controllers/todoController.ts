@@ -1,4 +1,4 @@
-import { TodoModel } from "../model/todo.js";
+import { TodoModel } from "../model/todoModel.js";
 import { Todo } from "../types.js";
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";

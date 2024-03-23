@@ -6,8 +6,15 @@ import {
   getTodos,
   updateTodo,
 } from "../controllers/todoController.js";
+import { protect } from "../middleware/authMiddleWare.js";
 
-export const router = express.Router();
+const router = express.Router();
 
-router.route("/").get(getTodos).post(createTodo);
-router.route("/:id").get(getTodo).delete(deleteTodo).put(updateTodo);
+router.route("/").get(protect, getTodos).post(protect, createTodo);
+router
+  .route("/:id")
+  .get(protect, getTodo)
+  .delete(protect, deleteTodo)
+  .put(protect, updateTodo);
+
+export default router;
