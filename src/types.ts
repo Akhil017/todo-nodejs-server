@@ -1,6 +1,7 @@
 import { Document } from "mongoose";
 
 export interface Todo extends Document {
+  user: User;
   todo: string;
   status: string;
   priority: string;

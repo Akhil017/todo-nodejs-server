@@ -21,12 +21,14 @@ exports.protect = (0, express_async_handler_1.default)((req, res, next) => __awa
     if (req.headers.authorization &&
         req.headers.authorization.startsWith("Bearer")) {
         try {
+            console.log("inside auth middleware");
             // Get token from header
             token = req.headers.authorization.split(" ")[1];
             // Verify token
             const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
             // Get user from token
             req.user = (yield userModel_1.UserModel.findById(decoded.id));
+            console.log({ user: req.user, id: req.user._id });
             next();
         }
         catch (error) {
