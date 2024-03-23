@@ -27,15 +27,11 @@ export const getTodo = asyncHandler(async (req: Request, res: Response) => {
 });
 
 export const createTodo = asyncHandler(async (req: Request, res: Response) => {
-  console.log("inside create todo");
-  console.log({ user_is: req.user });
-
   const user = await UserModel.findById(req?.user?._id);
   if (!user) {
     res.status(401);
     throw new Error("User not found");
   }
-  console.log({ user_found_user: user });
 
   const { todo, priority } = req.body;
 

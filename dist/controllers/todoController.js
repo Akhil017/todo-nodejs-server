@@ -36,14 +36,11 @@ exports.getTodo = (0, express_async_handler_1.default)((req, res) => __awaiter(v
 }));
 exports.createTodo = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _c, _d;
-    console.log("inside create todo");
-    console.log({ user_is: req.user });
     const user = yield userModel_js_1.UserModel.findById((_c = req === null || req === void 0 ? void 0 : req.user) === null || _c === void 0 ? void 0 : _c._id);
     if (!user) {
         res.status(401);
         throw new Error("User not found");
     }
-    console.log({ user_found_user: user });
     const { todo, priority } = req.body;
     if (!todo || !priority) {
         res.status(400);

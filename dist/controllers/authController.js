@@ -19,7 +19,6 @@ const userModel_1 = require("../model/userModel");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 exports.authGoogleUser = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let token;
-    console.log({ auth: req.headers });
     if (req.headers.authorization &&
         req.headers.authorization.startsWith("Bearer")) {
         try {
@@ -46,7 +45,7 @@ exports.authGoogleUser = (0, express_async_handler_1.default)((req, res) => __aw
                     name: payload === null || payload === void 0 ? void 0 : payload.name,
                 });
                 if (user) {
-                    sendResponse(401, user, res);
+                    sendResponse(201, user, res);
                 }
                 else {
                     res.status(400);

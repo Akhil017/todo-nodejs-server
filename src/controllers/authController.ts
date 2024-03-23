@@ -8,7 +8,6 @@ import { User } from "../types";
 export const authGoogleUser = asyncHandler(
   async (req: Request, res: Response) => {
     let token;
-    console.log({ auth: req.headers });
     if (
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer")
@@ -37,7 +36,7 @@ export const authGoogleUser = asyncHandler(
             name: payload?.name,
           });
           if (user) {
-            sendResponse(401, user, res);
+            sendResponse(201, user, res);
           } else {
             res.status(400);
             throw new Error("Invalid user data");

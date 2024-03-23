@@ -12,7 +12,6 @@ export const protect = asyncHandler(
       req.headers.authorization.startsWith("Bearer")
     ) {
       try {
-        console.log("inside auth middleware");
         // Get token from header
         token = req.headers.authorization.split(" ")[1];
         // Verify token
@@ -21,7 +20,6 @@ export const protect = asyncHandler(
         };
         // Get user from token
         req.user = (await UserModel.findById(decoded.id)) as User;
-        console.log({ user: req.user, id: req.user._id });
         next();
       } catch (error) {
         console.log(error);
