@@ -7,7 +7,7 @@ export const getTodo = asyncHandler(async (req: Request, res: Response) => {
   const user = await UserModel.findById(req?.user?.id);
 
   if (!user) {
-    res.status(401);
+    res.status(403);
     throw new Error("User not found");
   }
 
@@ -29,7 +29,7 @@ export const getTodo = asyncHandler(async (req: Request, res: Response) => {
 export const createTodo = asyncHandler(async (req: Request, res: Response) => {
   const user = await UserModel.findById(req?.user?._id);
   if (!user) {
-    res.status(401);
+    res.status(403);
     throw new Error("User not found");
   }
 
@@ -54,7 +54,7 @@ export const deleteTodo = asyncHandler(async (req: Request, res: Response) => {
   const user = await UserModel.findById(req?.user?.id);
 
   if (!user) {
-    res.status(401);
+    res.status(403);
     throw new Error("User not found");
   }
   const todo = await TodoModel.findById(req.params.id);
@@ -77,7 +77,7 @@ export const deleteTodo = asyncHandler(async (req: Request, res: Response) => {
 export const updateTodo = asyncHandler(async (req: Request, res: Response) => {
   const user = await UserModel.findById(req?.user?.id);
   if (!user) {
-    res.status(401);
+    res.status(403);
     throw new Error("User not found");
   }
 
@@ -106,7 +106,7 @@ export const getTodos = asyncHandler(async (req: Request, res: Response) => {
   const user = await UserModel.findById(req?.user?.id);
 
   if (!user) {
-    res.status(401);
+    res.status(403);
     throw new Error("User not found");
   }
   const todos = await TodoModel.find({ user: req?.user?.id });

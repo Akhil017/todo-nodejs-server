@@ -20,7 +20,7 @@ exports.getTodo = (0, express_async_handler_1.default)((req, res) => __awaiter(v
     var _a, _b;
     const user = yield userModel_js_1.UserModel.findById((_a = req === null || req === void 0 ? void 0 : req.user) === null || _a === void 0 ? void 0 : _a.id);
     if (!user) {
-        res.status(401);
+        res.status(403);
         throw new Error("User not found");
     }
     const todo = yield todoModel_js_1.TodoModel.findById(req.params.id);
@@ -38,7 +38,7 @@ exports.createTodo = (0, express_async_handler_1.default)((req, res) => __awaite
     var _c, _d;
     const user = yield userModel_js_1.UserModel.findById((_c = req === null || req === void 0 ? void 0 : req.user) === null || _c === void 0 ? void 0 : _c._id);
     if (!user) {
-        res.status(401);
+        res.status(403);
         throw new Error("User not found");
     }
     const { todo, priority } = req.body;
@@ -58,7 +58,7 @@ exports.deleteTodo = (0, express_async_handler_1.default)((req, res) => __awaite
     var _e, _f;
     const user = yield userModel_js_1.UserModel.findById((_e = req === null || req === void 0 ? void 0 : req.user) === null || _e === void 0 ? void 0 : _e.id);
     if (!user) {
-        res.status(401);
+        res.status(403);
         throw new Error("User not found");
     }
     const todo = yield todoModel_js_1.TodoModel.findById(req.params.id);
@@ -77,7 +77,7 @@ exports.updateTodo = (0, express_async_handler_1.default)((req, res) => __awaite
     var _g, _h;
     const user = yield userModel_js_1.UserModel.findById((_g = req === null || req === void 0 ? void 0 : req.user) === null || _g === void 0 ? void 0 : _g.id);
     if (!user) {
-        res.status(401);
+        res.status(403);
         throw new Error("User not found");
     }
     const todo = yield todoModel_js_1.TodoModel.findById(req.params.id);
@@ -96,7 +96,7 @@ exports.getTodos = (0, express_async_handler_1.default)((req, res) => __awaiter(
     var _j, _k;
     const user = yield userModel_js_1.UserModel.findById((_j = req === null || req === void 0 ? void 0 : req.user) === null || _j === void 0 ? void 0 : _j.id);
     if (!user) {
-        res.status(401);
+        res.status(403);
         throw new Error("User not found");
     }
     const todos = yield todoModel_js_1.TodoModel.find({ user: (_k = req === null || req === void 0 ? void 0 : req.user) === null || _k === void 0 ? void 0 : _k.id });
